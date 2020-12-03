@@ -24,24 +24,24 @@ APawnBase::APawnBase()
 
 }
 
-// Called when the game starts or when spawned
-void APawnBase::BeginPlay()
-{
-	Super::BeginPlay();
+// // Called when the game starts or when spawned
+// void APawnBase::BeginPlay()
+// {
+// 	Super::BeginPlay();
 	
-}
+// }
 
-// Called every frame
-void APawnBase::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
+// // Called every frame
+// void APawnBase::Tick(float DeltaTime)
+// {
+// 	Super::Tick(DeltaTime);
 
-}
+// }
 
-// Called to bind functionality to input
-void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+// // Called to bind functionality to input
+// void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+// {
+// 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
+// }
 
