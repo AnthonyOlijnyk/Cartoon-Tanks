@@ -18,6 +18,7 @@ APawnTank::APawnTank()
 void APawnTank::BeginPlay()
 {
 	Super::BeginPlay();
+    PlayerControllerRef = Cast<APlayerController>(GetController());
 	
 }
 
@@ -29,6 +30,14 @@ void APawnTank::Tick(float DeltaTime)
     Rotate();
     Move();
 
+    if(PlayerControllerRef)
+    {
+        FHitResult TraceHitResult;
+        PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, TraceHitResult);
+        FVector HitLocation = TraceHitResult.ImpactPoint;
+
+        RotateTurret(HitLocation);
+    }
 }
 
 // Called to bind functionality to input
@@ -37,6 +46,8 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
     PlayerInputComponent->BindAxis("MoveForward", this, &APawnTank::CalculateMoveInput);
     PlayerInputComponent->BindAxis("Turn", this, &APawnTank::CalculateRotateInput);
+    // Action different than axis because it is only 1 or 0 not analog
+    PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APawnTank::Fire);
 
 }
 
@@ -61,4 +72,9 @@ void APawnTank::Move()
 void APawnTank::Rotate()
 {
     AddActorLocalRotation(RotationDirection, true);
+}
+
+void APawnTank::HandleDestruction()
+{
+    Super::HandleDestruction();
 }
