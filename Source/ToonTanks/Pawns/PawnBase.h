@@ -32,6 +32,8 @@ public:
 	// Sets default values for this pawn's properties
 	APawnBase();
 
+	virtual void HandleDestruction();
+
 	// Tick, setup, begin are not needed in base class
 	// // Called every frame
 	// virtual void Tick(float DeltaTime) override;
@@ -59,7 +61,5 @@ protected:
 	void RotateTurret(FVector LookAtTarget);
 
 	void Fire();
-
-	virtual void HandleDestruction();
 
 };
